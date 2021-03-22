@@ -3,10 +3,11 @@
     package="com.meiling.framework">
 
     <application
+        android:name=".base.application.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -16,6 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".app.activity.DataBindButtonActivity" />
+        <activity android:name=".app.activity.DataBindEditTextActivity" />
+        <activity android:name=".app.activity.DataBindTextViewActivity" />
     </application>
 
 </manifest>

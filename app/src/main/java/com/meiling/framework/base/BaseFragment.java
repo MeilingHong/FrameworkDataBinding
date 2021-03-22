@@ -1,4 +1,4 @@
-package com.meiling.framework.app.base;
+package com.meiling.framework.base;
 
 import androidx.fragment.app.Fragment;
 
