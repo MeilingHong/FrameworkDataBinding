@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
         <import type="com.meiling.framework.app.viewmodel.data.Data"/>
         <variable
             name="nameEntity"
             type="Data" />
+        <variable
+            name="clickPresenter"
+            type="com.meiling.framework.app.fragment.DataBindFragment.FragmentClickPresenter" />
     </data>
 
     <LinearLayout
@@ -21,8 +22,23 @@
             android:layout_height="60dp"
             android:background="#cc3296fa"
             android:gravity="center"
+            android:onClick="@{(view)->clickPresenter.showDialog(view)}"
             android:text="@={nameEntity.name}"
             android:textColor="#ffffff"
             android:textSize="16sp" />
+        <CheckBox
+            android:id="@+id/checkFragment"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            style="@style/CheckBoxStyleCycle1"
+            android:checked="true"
+            />
+        <CheckBox
+            android:id="@+id/checkFragment2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            style="@style/CheckBoxStyleRectangle1"
+            android:checked="true"
+            />
     </LinearLayout>
 </layout>

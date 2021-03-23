@@ -14,5 +14,94 @@
         <attr name="tagVerticalSpace" format="dimension" />
         <attr name="tagHorizontalSpace" format="dimension" />
     </declare-styleable>
+    <!--
+    ********************************************************************************************************************************************************
+    -->
+    <style name="myProgressBarStyleLarge">
+        <item name="android:indeterminateDrawable">@drawable/rotate_loading_icon</item>
+        <item name="android:indeterminateDuration">1500</item>
+        <item name="android:minWidth">40dip</item>
+        <item name="android:maxWidth">40dip</item>
+        <item name="android:minHeight">40dip</item>
+        <item name="android:maxHeight">40dip</item>
+    </style>
+
+    <style name="myProgressBarStyleLarge2">
+        <item name="android:indeterminateDrawable">@drawable/rotate_loading_icon</item>
+        <item name="android:progressDrawable">@drawable/rotate_loading_icon</item>
+        <item name="android:indeterminateDuration">1500</item>
+        <item name="android:minWidth">40dip</item>
+        <item name="android:maxWidth">40dip</item>
+        <item name="android:minHeight">40dip</item>
+        <item name="android:maxHeight">40dip</item>
+    </style>
+
+    <!-- 方形CheckBox;使用时，不能够设置button属性，background属性 -->
+    <style name="CheckBoxStyleRectangle1" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:background">@drawable/checkbox_rectangle</item>
+        <item name="android:padding">1dp</item>
+    </style>
+
+    <style name="CheckBoxStyleCycle1" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@android:color/transparent</item>
+        <item name="android:background">@drawable/checkbox_cycle</item>
+        <item name="android:padding">1dp</item>
+    </style>
+
+    <!--
+    ********************************************************************************************************************************************************
+    -->
+
+    <style name="Dialog.NoTitle.BottomIn" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/AnimationBottomInOut</item>
+    </style>
+
+    <style name="Dialog.NoTitle.TopIn" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/AnimationTopInOut</item>
+    </style>
+
+    <style name="Dialog.NoTitle.AlphaIn2" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/AnimationAlphaInOut</item>
+    </style>
+
+    <style name="AnimationBottomInOut" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_out</item>
+    </style>
+
+    <style name="AnimationTopInOut" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/top_in</item>
+        <item name="android:windowExitAnimation">@anim/top_out</item>
+    </style>
+
+    <!-- 仿Toast的形式的Dialog*************************************************************************************** -->
+    <style name="Dialog.NoTitle.AlphaIn" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@style/AnimationAlphaInOut</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="AnimationAlphaInOut" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/alpha_in</item>
+        <item name="android:windowExitAnimation">@anim/alpha_out</item>
+    </style>
 
 </resources>
