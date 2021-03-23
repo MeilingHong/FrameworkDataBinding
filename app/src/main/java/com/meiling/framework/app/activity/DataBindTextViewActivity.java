@@ -37,7 +37,7 @@ public class DataBindTextViewActivity extends BaseActivity<ActivityDataBindTextv
     }
 
     @Override
-    public void delayCallback() {
+    public void lazyLoadCallback() {
 
     }
 

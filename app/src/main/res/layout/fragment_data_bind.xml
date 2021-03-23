@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.meiling.framework.app.viewmodel.data.Data"/>
+        <variable
+            name="nameEntity"
+            type="Data" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/clickFragment"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#cc3296fa"
+            android:gravity="center"
+            android:text="@={nameEntity.name}"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </LinearLayout>
+</layout>

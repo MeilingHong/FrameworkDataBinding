@@ -5,6 +5,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- 固定下方导航栏背景色 -->
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
 

@@ -35,19 +35,7 @@ public class DataBindButtonActivity extends BaseActivity<ActivityDataBindButtonB
 
     @Override
     public void initView() {
-
-    }
-
-    @Override
-    public void delayCallback() {
-
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        // todo 这里相当于初始化一个ViewModel，并注入到绑定对象中，当操作这个ViewModel时，关联的View跟着一起改变
+// todo 这里相当于初始化一个ViewModel，并注入到绑定对象中，当操作这个ViewModel时，关联的View跟着一起改变
         data = new Data();
         data.setName("自定义（DataBindTextView）");
         layoutBinding.setNameEntity(data);
@@ -83,6 +71,12 @@ public class DataBindButtonActivity extends BaseActivity<ActivityDataBindButtonB
             }
         };
     }
+
+    @Override
+    public void lazyLoadCallback() {
+
+    }
+
 
     public class ClickPresenter {
         public void doClick(View view, Data data) {

@@ -35,7 +35,7 @@ public class DataBindEditTextActivity extends BaseActivity<ActivityDataBindEditt
     }
 
     @Override
-    public void delayCallback() {
+    public void lazyLoadCallback() {
 
     }
 
