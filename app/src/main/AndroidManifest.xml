@@ -3,15 +3,6 @@
     package="com.meiling.framework">
 
     <!-- Declare features -->
-    <uses-feature android:name="android.hardware.camera" />
-    <!-- Declare permissions -->
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <!--  该权限在Android11以及以上版本时，在访问其他范围的文件时需要使用到【MediaStore的访问仅在当前页面可以访问到，超出后，就无法再访问了】  -->
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-
     <application
         android:name=".base.application.BaseApplication"
         android:allowBackup="true"
@@ -31,7 +22,18 @@
         <activity android:name=".app.activity.DataBindButtonActivity" />
         <activity android:name=".app.activity.DataBindEditTextActivity" />
         <activity android:name=".app.activity.DataBindTextViewActivity" />
-        <activity android:name=".app.activity.camerax.CameraXCaptureImageActivity" />
+        <activity
+            android:name=".app.activity.camerax.CameraXCaptureImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|smallestScreenSize|density|layoutDirection|keyboard" />
     </application>
+    <!-- Declare permissions -->
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--  该权限在Android11以及以上版本时，在访问其他范围的文件时需要使用到【MediaStore的访问仅在当前页面可以访问到，超出后，就无法再访问了】  -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
 </manifest>
