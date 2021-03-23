@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.meiling.framework.utils.log.Ulog;
 import com.meiling.framework.utils.statusbar.QMUIStatusBarHelper;
@@ -28,6 +29,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected boolean isDoubleBackExit = false;
     protected boolean isIgnoreBackKey = false;
     protected boolean isPortrait = true;
+    protected boolean keepScreenOn = false;
 
     @ColorInt
     protected int navigationBarColor = Color.TRANSPARENT;
@@ -83,6 +85,9 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if(keepScreenOn){
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
         Ulog.w(getClass().getName() + "---" + Thread.currentThread().getName() + "--- onDestroy");
         afterDestroy();
         layoutBinding.unbind();
@@ -96,6 +101,11 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         StatusBarColorUtil.setSystemUi(this,isFullScreen,isDarkNavigationBarButton,true);
         StatusBarColorUtil.setNaviagtionBarColor(this,navigationBarColor);
         setStatusFontColor(isWhiteStatusBarFontColor);
+
+        // 屏幕常亮
+        if(keepScreenOn){
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// 保持屏幕常亮，避免录制过程屏幕熄灭引起录制问题
+        }
     }
 
     protected void setStatusFontColor(boolean isWhite) {
