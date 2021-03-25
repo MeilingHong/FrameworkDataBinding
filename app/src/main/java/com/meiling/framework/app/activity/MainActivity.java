@@ -31,6 +31,11 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
+    /**
+     * todo DataBinding在当前页面修改时，能够够及时进行变更，但在跨页面时，
+     *  如果关联起来的话，如果处理不好，会使得错误的选择（修改）立马生效
+     */
+
     @Override
     public void setConfiguration() {
         isFullScreen = true;
