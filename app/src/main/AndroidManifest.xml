@@ -25,6 +25,9 @@
         <activity
             android:name=".app.activity.camerax.CameraXCaptureImageActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|smallestScreenSize|density|layoutDirection|keyboard" />
+        <activity
+            android:name=".app.activity.DataBindRecyclerViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|smallestScreenSize|density|layoutDirection|keyboard" />
     </application>
     <!-- Declare permissions -->
     <uses-feature android:name="android.hardware.camera" />

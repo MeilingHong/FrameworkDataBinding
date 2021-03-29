@@ -97,12 +97,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //                transaction.commit();
 //                Ulog.w("执行---添加");
 //            }
-            Ulog.w("执行---点击回调");
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{Manifest.permission.CAMERA}, PERMISSIONS_REQUEST_CODE);
-            } else {
-                startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
-            }
+
+
+//            Ulog.w("执行---点击回调");
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                requestPermissions(new String[]{Manifest.permission.CAMERA}, PERMISSIONS_REQUEST_CODE);
+//            } else {
+//                startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
+//            }
+
+            startActivity(new Intent(getApplicationContext(), DataBindRecyclerViewActivity.class));
         }
     }
 
