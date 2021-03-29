@@ -39,9 +39,10 @@ android {
         variant.outputs.all {
 //            def flavorFlag = variant.flavorName // 如果有渠道的话，显示对应的渠道信息（名称）
 //            def newName = "v" + variant.versionName + "_" + variant.versionCode + "_" + flavorFlag + "_" + dateFlag + ".apk"
-            def newName = "v" + variant.versionName + "_" + variant.versionCode + "_" + buildType.name + "_" + dateFlag + ".apk"
+//            def newName = "v" + variant.versionName + "_" + variant.versionCode + "_" + buildType.name + "_" + dateFlag + ".apk"
+            def newName = "app-" + buildType.name + ".apk"
             outputFileName = newName// todo 指定APK的输出文件名
-            variant.getPackageApplication().outputDirectory = new File("D:/Function/apk")// todo 指定了APK文件的输出路径
+            variant.getPackageApplication().outputDirectory = new File("D:/Function/apk") // todo 指定了APK文件的输出路径
         }
     }
 }

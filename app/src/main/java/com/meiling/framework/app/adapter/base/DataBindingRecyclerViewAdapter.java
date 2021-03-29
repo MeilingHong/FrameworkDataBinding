@@ -37,6 +37,12 @@ public abstract class DataBindingRecyclerViewAdapter<T> extends RecyclerView.Ada
         return LayoutInflater.from(mContext).inflate(layoutId, parent, false);
     }
 
+    public void doCallback(int viewId, int viewType, RecyclerView.ViewHolder holder, int position) {
+        if (mCallback != null) {
+            mCallback.onViewClickCallback(viewId, viewType, holder, position);
+        }
+    }
+
     @Override
     public int getItemCount() {
         return mList != null ? mList.size() : 0;

@@ -49,7 +49,7 @@ public class MainRecyclerViewAdapter extends DataBindingRecyclerViewAdapter<Recy
             temp.itemLayoutBinding.itemName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    temp.itemLayoutBinding.getNameEntity().setName(new Random().nextDouble() + "_Click");
+                    doCallback(R.id.itemName, 0, holder, position);
                 }
             });
         } else {
@@ -58,17 +58,13 @@ public class MainRecyclerViewAdapter extends DataBindingRecyclerViewAdapter<Recy
             temp.itemLayoutBinding.itemName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    temp.itemLayoutBinding.getNameEntity().setName(new Random().nextLong() + "_Click2");
+                    doCallback(R.id.itemName, 1, holder, position);
                 }
             });
             temp.itemLayoutBinding.itemAgeCover.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (temp.itemLayoutBinding.getNameEntity().getAge() < 100000) {
-                        temp.itemLayoutBinding.getNameEntity().setAge(temp.itemLayoutBinding.getNameEntity().getAge() + 1);
-                    } else {
-                        temp.itemLayoutBinding.getNameEntity().setAge(temp.itemLayoutBinding.getNameEntity().getAge() - 1);
-                    }
+                    doCallback(R.id.itemAgeCover, 1, holder, position);
                 }
             });
         }
