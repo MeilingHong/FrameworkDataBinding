@@ -53,6 +53,8 @@ public class LoadingDialog extends BaseFragmentDialog<DialogLoadingBinding> {
     }
 
     public void modifyHintMsg(String hintMsg) {
+        // Condition 'layoutDialogBinding.tvLoadingHint != null' is always 'true'
+        // DataBinding形式的使用将使得针对View的非空判断成为不必要的条件
         if (layoutDialogBinding.tvLoadingHint != null) {
             layoutDialogBinding.tvLoadingHint.setText(hintMsg);
         }

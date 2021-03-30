@@ -103,7 +103,7 @@ public abstract class BaseFragmentDialog<T extends ViewDataBinding> extends Dial
     }
 
     public View initView() {
-        layoutDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()),config != null && config.getContentViewLayout() != 0 ? config.getContentViewLayout() : R.layout.dialog_toast_alpha,null,false);
+        layoutDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(getContext()), config != null && config.getContentViewLayout() != 0 ? config.getContentViewLayout() : R.layout.dialog_toast_alpha, null, false);
         initContentView(layoutDialogBinding.getRoot());
         return layoutDialogBinding.getRoot();
     }
@@ -209,10 +209,8 @@ public abstract class BaseFragmentDialog<T extends ViewDataBinding> extends Dial
             mDelayCloseHandler.removeCallbacksAndMessages(null);
             mDelayCloseHandler = null;
         }
-    }
-
-    public boolean isShowing() {
-        return getDialog() != null ? getDialog().isShowing() : false;
+        layoutDialogBinding.unbind();
+        layoutDialogBinding = null;
     }
 
     @Override

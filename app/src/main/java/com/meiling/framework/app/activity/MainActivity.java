@@ -22,12 +22,16 @@ import com.meiling.framework.app.fragment.DataBindFragment;
 import com.meiling.framework.base.BaseActivity;
 import com.meiling.framework.databinding.ActivityMainBinding;
 import com.meiling.framework.utils.log.Ulog;
+import com.meiling.framework.utils.rxjava.RxJavaUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
+import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
@@ -106,7 +110,11 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //                startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
 //            }
 
-            startActivity(new Intent(getApplicationContext(), DataBindRecyclerViewActivity.class));
+//            startActivity(new Intent(getApplicationContext(), DataBindRecyclerViewActivity.class));
+
+
+//            RxJavaUtil.getInstance().doExample(getApplicationContext(),"A");
+//            RxJavaUtil.getInstance().doExample(getApplicationContext(),"B");
         }
     }
 

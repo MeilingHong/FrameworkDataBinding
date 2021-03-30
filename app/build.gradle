@@ -60,7 +60,13 @@ dependencies {
 
     implementation "androidx.recyclerview:recyclerview:1.1.0"
 
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //ConverterFactory的Gson依赖包
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    //CallAdapterFactory的Rx依赖包
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
 
     // CameraX core library
     def camerax_version = '1.0.0-rc01'

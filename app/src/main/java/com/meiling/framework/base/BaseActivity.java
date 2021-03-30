@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.WindowManager;
 
 import com.meiling.framework.utils.log.Ulog;
@@ -39,7 +38,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
      * 由于无法使用Module的形式来进行关联【跨module时无法通过。属性来获取对象，应该是跟其实现有关】，所以基类只能在启动module中
      * 不需要使用databinding框架的部分可以使用module的形式进行复用
      */
-    protected T layoutBinding;
+    protected T layoutBinding = null;
 
     public abstract void setConfiguration();
 
@@ -85,12 +84,13 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(keepScreenOn){
+        if (keepScreenOn) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         }
         Ulog.w(getClass().getName() + "---" + Thread.currentThread().getName() + "--- onDestroy");
         afterDestroy();
-        layoutBinding.unbind();
+        layoutBinding.unbind();// todo 当页面销毁时，对databinding对象进行解绑操作
+        layoutBinding = null;
     }
 
     private void applyConfiguration() {
@@ -98,12 +98,12 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         setRequestedOrientation(isPortrait ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT : ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         //设置是否全屏，状态栏字体颜色是否是白色
 
-        StatusBarColorUtil.setSystemUi(this,isFullScreen,isDarkNavigationBarButton,true);
-        StatusBarColorUtil.setNaviagtionBarColor(this,navigationBarColor);
+        StatusBarColorUtil.setSystemUi(this, isFullScreen, isDarkNavigationBarButton, true);
+        StatusBarColorUtil.setNaviagtionBarColor(this, navigationBarColor);
         setStatusFontColor(isWhiteStatusBarFontColor);
 
         // 屏幕常亮
-        if(keepScreenOn){
+        if (keepScreenOn) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);// 保持屏幕常亮，避免录制过程屏幕熄灭引起录制问题
         }
     }

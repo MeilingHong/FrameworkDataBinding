@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="40dp"
+    android:height="40dp"
+    android:viewportWidth="40"
+    android:viewportHeight="40"
+    >
+    <!-- 画背景色 -->
+    <!--
+
+    M = moveto(M X,Y) ：将画笔移动到指定的坐标位置
+    L = lineto(L X,Y) ：画直线到指定的坐标位置
+    H = horizontal lineto(H X)：画水平线到指定的X坐标位置
+    V = vertical lineto(V Y)：画垂直线到指定的Y坐标位置
+    C = curveto(C X1,Y1,X2,Y2,ENDX,ENDY)：三次贝赛曲线
+    S = smooth curveto(S X2,Y2,ENDX,ENDY)
+    Q = quadratic Belzier curve(Q X,Y,ENDX,ENDY)：二次贝赛曲线
+    T = smooth quadratic Belzier curveto(T ENDX,ENDY)：映射
+    A = elliptical Arc(A RX,RY,XROTATION,FLAG1,FLAG2,X,Y)：弧线
+    Z = closepath()：关闭路径
+
+    -->
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M0,0h40v40h-40v-40z" />
+
+    <path
+        android:fillColor="#f2f2f2"
+        android:strokeColor="#000000"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.5"
+        android:pathData="M 10,20 l 8,-8"
+        />
+    <path
+        android:fillColor="#f2f2f2"
+        android:strokeColor="#000000"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.5"
+        android:pathData="M 10,20 l 8,8"
+        />
+    <path
+        android:fillColor="#f2f2f2"
+        android:strokeColor="#000000"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.5"
+        android:pathData="M 10,20 l 20,0"
+        />
+</vector>

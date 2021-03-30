@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
  */
 
 public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
-    protected T layoutFragmentBinding;
+    protected T layoutFragmentBinding = null;
 
     public abstract int layoutViewId();
 
@@ -34,7 +34,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        layoutFragmentBinding = (T)DataBindingUtil.inflate(inflater, layoutViewId(), container, false);
+        layoutFragmentBinding = (T) DataBindingUtil.inflate(inflater, layoutViewId(), container, false);
         initView();
         Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler() {
             @Override
@@ -58,5 +58,7 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         super.onDestroyView();
         Ulog.w(getClass().getName() + "---" + Thread.currentThread().getName() + "--- onDestroyView(Fragment)");
         afterDestroy();
+        layoutFragmentBinding.unbind();
+        layoutFragmentBinding = null;
     }
 }

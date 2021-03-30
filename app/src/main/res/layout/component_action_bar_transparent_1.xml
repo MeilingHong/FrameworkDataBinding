@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.meiling.framework.widget.status.StatusLayout
+        android:id="@+id/slComponentActionBarStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/ivComponentActionBarBack"
+        android:layout_width="@dimen/dp44"
+        android:layout_height="@dimen/dp44"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/slComponentActionBarStatus"
+        android:paddingBottom="@dimen/dp2"
+        android:paddingStart="@dimen/dp2"
+        android:paddingEnd="@dimen/dp2"
+        android:paddingTop="@dimen/dp2"
+        android:src="@drawable/custom_path_arrow_to_left" />
+
+    <TextView
+        android:id="@+id/tvComponentActionBarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp44"
+        android:layout_below="@id/slComponentActionBarStatus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="@dimen/dp48"
+        android:layout_marginStart="@dimen/dp48"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/color_303030"
+        android:textSize="@dimen/sp18" />
+
+</RelativeLayout>
