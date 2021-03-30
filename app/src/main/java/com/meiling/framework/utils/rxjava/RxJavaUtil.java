@@ -40,7 +40,7 @@ public class RxJavaUtil {
     }
 
     public void addDisposable(Observable<?> observable, DisposableObserver observer) {
-        // Schedulers 实例本身使用的是，线程池的那一套，不过是根据自己的需要进行线程池对应的参数配置
+        // Schedulers【IoScheduler】 实例本身使用的是，线程池的那一套，不过是根据自己的需要进行线程池对应的参数配置
         compositeDisposable.add(observable.subscribeOn(Schedulers.io())
                 // mainThread 本身基于handler来进行
                 .observeOn(AndroidSchedulers.mainThread())
