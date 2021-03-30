@@ -14,8 +14,7 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by marisareimu@126.com on 2021-03-30  10:20
- * project FrameworkDataBinding
+ * 异步任务替代工具类
  */
 
 public class RxJavaUtil {
