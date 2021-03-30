@@ -109,10 +109,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //            } else {
 //                startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
 //            }
-
+            // todo databinding对应的ListView/RecyclerView用法
 //            startActivity(new Intent(getApplicationContext(), DataBindRecyclerViewActivity.class));
 
 
+
+            // todo 异步任务替代类
 //            RxJavaUtil.getInstance().doExample(getApplicationContext(),"A");
 //            RxJavaUtil.getInstance().doExample(getApplicationContext(),"B");
         }
@@ -121,8 +123,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        /**
+         * todo 关于Android10到Android11以上的文件访问问题：
+         *  1、getExternalFilesDir(String type) 不需要权限（APP的内部空间，删除APP也会删除文件）
+         *  2、MediaStore访问文件，在获取后可以在当前页面进行访问，但超出后可能存在访问不到的问题
+         *  （例如：获取地址后，在Service中去通过File访问，确定会无法访问到）
+         *  3、申请获取Manage_external_storage权限，当通过后，能够访问全部路径下文件（公共路径中的，以及私有路径下的也可以）
+         */
         if (requestCode == PERMISSIONS_REQUEST_CODE) {
             if (PackageManager.PERMISSION_GRANTED == (grantResults == null ? -1 : grantResults[0])) {
+
                 // Take the user to the success fragment when permission is granted
 //                Toast.makeText(getApplicationContext(), "Permission request granted", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
