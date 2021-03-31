@@ -39,7 +39,13 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected boolean keepScreenOn = false;
 
     @ColorInt
-    protected int navigationBarColor = Color.WHITE;
+    protected int customNavigationBarColor = Color.WHITE;
+    /**
+     * <ul>
+     *     从Android 9 的表现上来看{ isDarkNavigationBarButton}似乎并没哟生效，
+     *     而 { customNavigationBarColor} 的深浅直接就影响虚拟按键的颜色
+     * </ul>
+     */
     protected boolean isDarkNavigationBarButton = true;
 
     /**
@@ -108,7 +114,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         //设置是否全屏，状态栏字体颜色是否是白色
 
         StatusBarColorUtil.setSystemUi(this, isFullScreen, isDarkNavigationBarButton, true);// todo 可尝试不设置这个方法，开是否对导航按钮颜色有影响
-        StatusBarColorUtil.setNaviagtionBarColor(this, navigationBarColor);
+        StatusBarColorUtil.setNaviagtionBarColor(this, customNavigationBarColor);
 
         setStatusFontColor(isWhiteStatusBarFontColor);
 

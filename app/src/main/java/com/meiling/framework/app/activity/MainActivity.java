@@ -40,7 +40,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     public void setConfiguration() {
         isFullScreen = true;
         isDarkNavigationBarButton = false;
-        navigationBarColor = Color.parseColor("#333296fa");
+        // 从Android 9 的表现上来看【isDarkNavigationBarButton】
+        customNavigationBarColor = Color.parseColor("#ff000000");
     }
 
     @Override
