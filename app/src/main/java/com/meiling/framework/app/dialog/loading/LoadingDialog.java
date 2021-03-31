@@ -9,7 +9,7 @@ import android.view.View;
 import com.meiling.framework.R;
 import com.meiling.framework.databinding.DialogLoadingBinding;
 import com.meiling.framework.dialog.base.BaseFragmentDialog;
-import com.meiling.framework.dialog.base.DialogConfig;
+import com.meiling.framework.dialog.config.DialogConfig;
 import com.meiling.framework.dialog.callback.IDialogDismissCallback;
 import com.meiling.framework.dialog.callback.IDialogShowCallback;
 import com.meiling.framework.utils.datahandle.UnitExchangeUtil;

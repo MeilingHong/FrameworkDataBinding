@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FrameworkDataBinding</string>
+
+    <string name="hint">提醒</string>
 </resources>

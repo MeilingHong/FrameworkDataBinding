@@ -1,21 +1,27 @@
 package com.meiling.framework.base;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.meiling.framework.R;
 import com.meiling.framework.utils.log.Ulog;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import androidx.annotation.IntRange;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -67,6 +73,109 @@ public abstract class BaseFragment<T extends ViewDataBinding> extends Fragment {
         afterDestroy();
         layoutFragmentBinding.unbind();
         layoutFragmentBinding = null;
+    }
+
+    /*
+     *********************************************************************************************************
+     */
+
+    /**
+     * todo 移除Handler消息队列中的全部信息
+     *
+     * @param handler
+     */
+    public void removeHandlerMessages(Handler handler) {
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
+        }
+    }
+
+    /**
+     * todo 移除Handler消息队列中的全部信息，并释放Handler对象
+     *
+     * @param handler
+     */
+    public void removeHandlerMessagesAndRelease(Handler handler) {
+        if (handler != null) {
+            handler.removeCallbacksAndMessages(null);
+            handler = null;
+        }
+    }
+
+    /*
+     *********************************************************************************************************
+     */
+
+    public void skipIntent(Bundle bundle, @NonNull Class<?> clz) {
+        skipIntent(bundle, clz, -1);
+    }
+
+    /**
+     * 跳转方法
+     *
+     * @param bundle
+     * @param clz
+     * @param requestCode
+     */
+    public void skipIntent(Bundle bundle, @NonNull Class<?> clz, @IntRange(from = -1) int requestCode) {
+        Intent intent = new Intent(getContext(), clz);
+        //如果需要传参数
+        if (bundle != null) {
+            intent.putExtras(bundle);
+        }
+
+        //设置页面进出动画
+        getActivity().overridePendingTransition(R.anim.up_in, R.anim.up_out);//往上进入，往上出去
+        //是否进行有返回值得跳转
+        if (requestCode != -1) {
+            startActivityForResult(intent, requestCode);
+        } else {
+            startActivity(intent);
+        }
+    }
+
+    /*
+     *********************************************************************************************************
+     */
+
+    public void showHintCenterOrderMsg(String msg) {
+        try {
+            if (!TextUtils.isEmpty(msg)) {
+                View view = LayoutInflater.from(getActivity()).inflate(R.layout.toast_center, null);
+                TextView tvToast = view.findViewById(R.id.tvToast);
+                tvToast.setText(msg);
+                ToastUtil.toastShortOrder(getActivity(), view, Gravity.CENTER);
+            }
+        } catch (Exception e) {
+            Looper.prepare();
+            if (!TextUtils.isEmpty(msg)) {
+                View view = LayoutInflater.from(getActivity()).inflate(R.layout.toast_center, null);
+                TextView tvToast = view.findViewById(R.id.tvToast);
+                tvToast.setText(msg);
+                ToastUtil.toastShortOrder(getActivity(), view, Gravity.CENTER);
+            }
+            Looper.loop();
+        }
+    }
+
+    public void showHintCenterOrderMsgRound100(String msg) {
+        try {
+            if (!TextUtils.isEmpty(msg)) {
+                View view = LayoutInflater.from(getActivity()).inflate(R.layout.toast_round_100_center, null);
+                TextView tvToast = view.findViewById(R.id.tvToast);
+                tvToast.setText(msg);
+                ToastUtil.toastShortOrder(getActivity(), view, Gravity.CENTER);
+            }
+        } catch (Exception e) {
+            Looper.prepare();
+            if (!TextUtils.isEmpty(msg)) {
+                View view = LayoutInflater.from(getActivity()).inflate(R.layout.toast_round_100_center, null);
+                TextView tvToast = view.findViewById(R.id.tvToast);
+                tvToast.setText(msg);
+                ToastUtil.toastShortOrder(getActivity(), view, Gravity.CENTER);
+            }
+            Looper.loop();
+        }
     }
 
     /*

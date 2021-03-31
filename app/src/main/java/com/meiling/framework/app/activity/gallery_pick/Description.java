@@ -1,4 +1,4 @@
-package com.meiling.framework.app.activity.gallery;
+package com.meiling.framework.app.activity.gallery_pick;
 
 public interface Description {
     /**

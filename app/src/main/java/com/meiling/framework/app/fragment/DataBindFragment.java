@@ -1,6 +1,5 @@
 package com.meiling.framework.app.fragment;
 
-import android.text.TextUtils;
 import android.view.View;
 
 import com.meiling.framework.R;
@@ -34,10 +33,12 @@ public class DataBindFragment extends BaseFragment<FragmentDataBindBinding> {
     public void lazyLoadCallback() {
 
     }
+
     private LoadingDialog loadingDialog;
-    public class FragmentClickPresenter{
-        public void showDialog(View view){
-            if(loadingDialog==null){
+
+    public class FragmentClickPresenter {
+        public void showDialog(View view) {
+            if (loadingDialog == null) {
                 loadingDialog = new LoadingDialog();
                 loadingDialog.setDialogConfig(getContext(), null, new IDialogDismissCallback() {
                     @Override

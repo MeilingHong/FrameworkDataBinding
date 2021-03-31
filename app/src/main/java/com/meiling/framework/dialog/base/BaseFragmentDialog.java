@@ -17,6 +17,7 @@ import android.view.WindowManager;
 import com.meiling.framework.R;
 import com.meiling.framework.dialog.callback.IDialogDismissCallback;
 import com.meiling.framework.dialog.callback.IDialogShowCallback;
+import com.meiling.framework.dialog.config.DialogConfig;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

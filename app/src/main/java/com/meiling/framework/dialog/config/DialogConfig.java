@@ -1,4 +1,4 @@
-package com.meiling.framework.dialog.base;
+package com.meiling.framework.dialog.config;
 
 import android.view.Gravity;
 import android.view.ViewGroup;

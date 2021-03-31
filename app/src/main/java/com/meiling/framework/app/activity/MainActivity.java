@@ -76,7 +76,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     }
 
     private DataBindFragment mainFragment;
-    private final int PERMISSIONS_REQUEST_CODE = 10;
 
     public class MainClickPresenter {
         /**
@@ -102,7 +101,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
 //            Ulog.w("执行---点击回调");
 //            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                requestPermissions(new String[]{Manifest.permission.CAMERA}, PERMISSIONS_REQUEST_CODE);
+//                requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_PERMISSION);
 //            } else {
 //                startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
 //            }
@@ -114,7 +113,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //            RxJavaUtil.getInstance().doExample(getApplicationContext(),"B");
 
             commonRequestPermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_PERMISSION_CODE);
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_CODE_PERMISSION);
         }
     }
 
@@ -134,6 +133,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     public void requestPermissionSuccess(int requestCode) {
         super.requestPermissionSuccess(requestCode);
         Toast.makeText(this, "请求通过", Toast.LENGTH_SHORT).show();
+        switch (requestCode){
+            case REQUEST_CODE_PERMISSION:{
+                startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
+                break;
+            }
+        }
     }
 
     @Override
@@ -152,7 +157,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
          *  （例如：获取地址后，在Service中去通过File访问，确定会无法访问到）
          *  3、申请获取Manage_external_storage权限，当通过后，能够访问全部路径下文件（公共路径中的，以及私有路径下的也可以）
          */
-        if (requestCode == PERMISSIONS_REQUEST_CODE) {
+        if (requestCode == REQUEST_CODE_PERMISSION) {
             if (PackageManager.PERMISSION_GRANTED == (grantResults == null ? -1 : grantResults[0])) {
 
                 // Take the user to the success fragment when permission is granted

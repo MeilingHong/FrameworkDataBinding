@@ -187,4 +187,5 @@
 
     <color name="bg_color_e4e9ff">#e4e9ff</color>
     <color name="bg_color_dae3ff">#dae3ff</color>
+    <color name="white">#ffffff</color>
 </resources>
