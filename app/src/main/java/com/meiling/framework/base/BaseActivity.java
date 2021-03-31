@@ -39,7 +39,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     protected boolean keepScreenOn = false;
 
     @ColorInt
-    protected int navigationBarColor = Color.TRANSPARENT;
+    protected int navigationBarColor = Color.WHITE;
     protected boolean isDarkNavigationBarButton = true;
 
     /**
@@ -109,6 +109,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
         StatusBarColorUtil.setSystemUi(this, isFullScreen, isDarkNavigationBarButton, true);
         StatusBarColorUtil.setNaviagtionBarColor(this, navigationBarColor);
+
         setStatusFontColor(isWhiteStatusBarFontColor);
 
         // 屏幕常亮
