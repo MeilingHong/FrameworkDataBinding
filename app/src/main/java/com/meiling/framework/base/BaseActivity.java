@@ -107,7 +107,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         setRequestedOrientation(isPortrait ? ActivityInfo.SCREEN_ORIENTATION_PORTRAIT : ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         //设置是否全屏，状态栏字体颜色是否是白色
 
-        StatusBarColorUtil.setSystemUi(this, isFullScreen, isDarkNavigationBarButton, true);
+        StatusBarColorUtil.setSystemUi(this, isFullScreen, isDarkNavigationBarButton, true);// todo 可尝试不设置这个方法，开是否对导航按钮颜色有影响
         StatusBarColorUtil.setNaviagtionBarColor(this, navigationBarColor);
 
         setStatusFontColor(isWhiteStatusBarFontColor);
