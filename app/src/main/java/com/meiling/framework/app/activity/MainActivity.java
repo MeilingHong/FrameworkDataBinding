@@ -10,7 +10,6 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.MediaRecorder;
-import android.os.Build;
 import android.util.Log;
 import android.util.Size;
 import android.view.View;
@@ -21,23 +20,20 @@ import com.meiling.framework.app.activity.camerax.CameraXCaptureImageActivity;
 import com.meiling.framework.app.fragment.DataBindFragment;
 import com.meiling.framework.base.BaseActivity;
 import com.meiling.framework.databinding.ActivityMainBinding;
+import com.meiling.framework.utils.gson.GsonUtil;
 import com.meiling.framework.utils.log.Ulog;
-import com.meiling.framework.utils.rxjava.RxJavaUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentTransaction;
-import io.reactivex.Observable;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.functions.Consumer;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     /**
      * todo DataBinding在当前页面修改时，能够够及时进行变更，但在跨页面时，
-     *  如果关联起来的话，如果处理不好，会使得错误的选择（修改）立马生效
+     * 如果关联起来的话，如果处理不好，会使得错误的选择（修改）立马生效
      */
 
     @Override
@@ -112,12 +108,37 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             // todo databinding对应的ListView/RecyclerView用法
 //            startActivity(new Intent(getApplicationContext(), DataBindRecyclerViewActivity.class));
 
-
-
             // todo 异步任务替代类
 //            RxJavaUtil.getInstance().doExample(getApplicationContext(),"A");
 //            RxJavaUtil.getInstance().doExample(getApplicationContext(),"B");
+
+            commonRequestPermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_PERMISSION_CODE);
         }
+    }
+
+    @Override
+    public void requestPermissionIllegalArgument(int requestCode) {
+        super.requestPermissionIllegalArgument(requestCode);
+        Ulog.w("请求参数非法【权限】");
+    }
+
+    @Override
+    public void requestPermissionIgnore(int requestCode) {
+        super.requestPermissionIgnore(requestCode);
+        Ulog.w("请求被忽略【权限】");
+    }
+
+    @Override
+    public void requestPermissionSuccess(int requestCode) {
+        super.requestPermissionSuccess(requestCode);
+        Toast.makeText(this, "请求通过", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void requestPermissionFailure(List<String> deniedPermission, int requestCode) {
+        super.requestPermissionFailure(deniedPermission, requestCode);
+        Toast.makeText(this, "请求失败：" + GsonUtil.getInstance().toJsonStr(deniedPermission), Toast.LENGTH_SHORT).show();
     }
 
     @Override
