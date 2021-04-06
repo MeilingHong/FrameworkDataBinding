@@ -112,8 +112,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //            RxJavaUtil.getInstance().doExample(getApplicationContext(),"A");
 //            RxJavaUtil.getInstance().doExample(getApplicationContext(),"B");
 
-            commonRequestPermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_CODE_PERMISSION);
+            // todo 权限请求
+//            commonRequestPermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
+//                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_CODE_PERMISSION);
         }
     }
 
