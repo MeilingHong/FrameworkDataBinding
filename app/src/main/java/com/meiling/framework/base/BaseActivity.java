@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.os.MessageQueue;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -18,6 +19,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.meiling.framework.R;
+import com.meiling.framework.base.callback.IHandleMessage;
 import com.meiling.framework.utils.log.Ulog;
 import com.meiling.framework.utils.statusbar.QMUIStatusBarHelper;
 import com.meiling.framework.utils.statusbar.StatusBarColorUtil;
@@ -181,6 +183,23 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
     /*
      *********************************************************************************************************
      */
+
+    /**
+     * 提供一个构件Handler的统一的方法
+     * @param iHandleMessage
+     * @return
+     */
+    public Handler newHandler(@NonNull IHandleMessage iHandleMessage) {
+        return new Handler(Looper.getMainLooper()) {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (iHandleMessage != null) {
+                    iHandleMessage.handleMessage(msg);
+                }
+            }
+        };
+    }
 
     /**
      * todo 移除Handler消息队列中的全部信息
