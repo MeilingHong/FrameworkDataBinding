@@ -1,6 +1,5 @@
 package com.meiling.framework.app.activity;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -115,6 +114,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
             // todo 权限请求
 //            commonRequestPermission(new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE,
 //                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_CODE_PERMISSION);
+
+            Toast.makeText(MainActivity.this, "--->" + layoutBinding.password.getText().toString() + "<---", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -134,8 +135,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
     public void requestPermissionSuccess(int requestCode) {
         super.requestPermissionSuccess(requestCode);
         Toast.makeText(this, "请求通过", Toast.LENGTH_SHORT).show();
-        switch (requestCode){
-            case REQUEST_CODE_PERMISSION:{
+        switch (requestCode) {
+            case REQUEST_CODE_PERMISSION: {
                 startActivity(new Intent(getApplicationContext(), CameraXCaptureImageActivity.class));
                 break;
             }

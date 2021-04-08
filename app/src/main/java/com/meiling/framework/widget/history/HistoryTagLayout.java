@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
  * WRAP_CONTENT  ---  MeasureSpec.AT_MOST
  * <p>
  * Created by marisareimu@126.com on 2021-02-28  10:57
- * project UEvidenceProtect
  */
 public class HistoryTagLayout extends ViewGroup {
     private int childHorizontalSpace;
