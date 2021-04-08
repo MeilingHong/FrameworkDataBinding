@@ -7,6 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!-- 固定下方导航栏背景色 -->
         <item name="android:navigationBarColor">@android:color/transparent</item>
+        <!-- todo 需要注意，这个背景针对所有页面都生效，虽然能够解决启动时出现白屏的问题，
+                但针对全部页面不需要显示这个背景时，需要针对性的设置背景色【非透明色】 -->
+        <item name="android:windowBackground">@mipmap/ic_launcher</item>
     </style>
 
 
