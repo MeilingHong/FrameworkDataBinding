@@ -28,6 +28,7 @@
         <activity
             android:name=".app.activity.DataBindRecyclerViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize|mcc|mnc|smallestScreenSize|density|layoutDirection|keyboard" />
+
     </application>
 
 

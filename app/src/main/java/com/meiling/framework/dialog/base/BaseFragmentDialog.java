@@ -240,7 +240,10 @@ public abstract class BaseFragmentDialog<T extends ViewDataBinding> extends Dial
     public void show(FragmentManager manager, String tag) {
         try {
             //解决  IllegalStateException: Can not perform this action after onSaveInstanceState：
-            super.show(manager, tag);
+            if (manager != null && null == manager.findFragmentByTag(tag)) {
+                // 增加一个额外的判断，避免fragment多次添加导致的状态异常
+                super.show(manager, tag);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
