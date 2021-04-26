@@ -73,7 +73,7 @@
             android:textColor="#333333"
             android:padding="10dp"
             android:background="#bbbbbb"
-            android:onClick="@{(view)->userPresenter.click(view)}"
+            android:onClick="@{(view)->userPresenter.onClick(view)}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvName" />
@@ -86,7 +86,7 @@
             android:textColor="#333333"
             android:padding="10dp"
             android:background="#3296fa"
-            android:onClick="@{userPresenter::click}"
+            android:onClick="@{userPresenter::onClick}"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvName1" />

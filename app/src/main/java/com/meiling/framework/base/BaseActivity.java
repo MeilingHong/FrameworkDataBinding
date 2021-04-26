@@ -35,12 +35,24 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.lifecycle.LifecycleObserver;
 
 /**
  * Created by marisareimu@126.com on 2021-03-19  15:40
  * project FrameworkDataBinding
  */
-public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity {
+
+
+public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatActivity implements LifecycleObserver {
+    /*
+     * LifecycleOwner 有本身继承了ComponentActivity，而ComponentActivity实现了LifecycleOwner，所以不需要额外再显示声明来实现LifecycleOwner接口
+     *
+     *
+     * Lifecycle 本身解决的应该是需要依赖Activity或Fragment本身的声明周期进行对应资源操作的方法
+     * 1、例如Handler（在onDestroy/onDestroyView中需要进行释放）
+     * 2、Presenter在（在onDestroy/onDestroyView中需要进行释放）
+     *
+     */
     protected boolean isFullScreen = true;// true 表示需要设置全屏
     protected boolean isWhiteStatusBarFontColor = false;// true 表示白色文字
     protected boolean isDoubleBackExit = false;
@@ -81,6 +93,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
         applyConfiguration();
         super.onCreate(savedInstanceState);
         layoutBinding = DataBindingUtil.setContentView(this, layoutViewId());
+//        getLifecycle().addObserver(this);
         initView();
 
         // 实际测试发现，该回调的调用在执行完onWindowFocusChanged方法之后【满足当界面显示完成之后进行回调】
@@ -186,6 +199,7 @@ public abstract class BaseActivity<T extends ViewDataBinding> extends AppCompatA
 
     /**
      * 提供一个构件Handler的统一的方法
+     *
      * @param iHandleMessage
      * @return
      */

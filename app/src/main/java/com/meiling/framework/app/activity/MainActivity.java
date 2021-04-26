@@ -21,6 +21,7 @@ import com.meiling.framework.base.BaseActivity;
 import com.meiling.framework.databinding.ActivityMainBinding;
 import com.meiling.framework.utils.gson.GsonUtil;
 import com.meiling.framework.utils.log.Ulog;
+import com.meiling.framework.utils.storage.StorageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +83,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
          *
          * @param view
          */
-        public void jumpToActivity(View view) {
+        public void jumpToActivity(View view) {// MainActivity本身的点击回调
 //            startActivity(new Intent(getApplicationContext(), DataBindButtonActivity.class));
 //            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 //            if (getSupportFragmentManager().findFragmentByTag(String.valueOf(0)) != null) {
@@ -116,6 +117,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 //                    Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO}, REQUEST_CODE_PERMISSION);
 
             Toast.makeText(MainActivity.this, "--->" + layoutBinding.password.getText().toString() + "<---", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "--->" + layoutBinding.password.getText().toString() + "<---", Toast.LENGTH_SHORT).show();
+            Ulog.w("getSystemAvailableSize:" + StorageUtils.getSystemAvailableSize(getApplicationContext()) / 1024.0f / 1024 + "MB");
+            Ulog.e("--------------------------------------------------");
+            Ulog.w("getSDAvailableSize:" + StorageUtils.getSDAvailableSize(getApplicationContext()) / 1024.0f / 1024 + "MB");
         }
     }
 

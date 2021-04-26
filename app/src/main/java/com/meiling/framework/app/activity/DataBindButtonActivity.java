@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.meiling.framework.R;
 import com.meiling.framework.app.viewmodel.data.Data;
 import com.meiling.framework.base.BaseActivity;
+import com.meiling.framework.base.callback.BaseClickPresenter;
 import com.meiling.framework.databinding.ActivityDataBindButtonBinding;
 import com.meiling.framework.utils.log.Ulog;
 
@@ -78,18 +79,16 @@ public class DataBindButtonActivity extends BaseActivity<ActivityDataBindButtonB
     }
 
 
-    public class ClickPresenter {
+    public class ClickPresenter extends BaseClickPresenter {
         public void doClick(View view, Data data) {
             Toast.makeText(DataBindButtonActivity.this, (data != null ? data.getName() : "空数据") + "---" + (view != null ? "doClick(View view,Data data)---View不为空" : "doClick(View view,Data data)---出入为空"), Toast.LENGTH_SHORT).show();
         }
 
-        public void click(View view) {
+        @Override
+        public void onClick(View view) {
             Toast.makeText(DataBindButtonActivity.this, (view != null ? "click---View不为空" : "click---出入为空"), Toast.LENGTH_SHORT).show();
         }
 
-        public void afterTextChange(Editable editable){// 似乎EditText没法使用到这个
-
-        }
     }
 
 }
